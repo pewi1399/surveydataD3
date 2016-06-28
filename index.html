@@ -17,7 +17,8 @@
 			//					{letter:2,	frequency:.01492, pitch: 0.02},
 			//					{letter:3,	frequency:.08782, pitch: 0.03},
 			//					{letter:4,	frequency:.04253, pitch: 0.04}];
-								
+			
+//group and letter are , in a sense, x columns, frequency and picth are y columns			
 			var data = [{group:1, letter:1,	frequency:.08167, pitch: 0.01},
 								{group:1, letter:2,	frequency:.01492, pitch: 0.02},
 								{group:1, letter:3,	frequency:.08782, pitch: 0.03},
@@ -38,7 +39,7 @@ color.domain(d3.keys(data[0]).filter(function(key) { return key !== "letter" & k
     return {
       name: name,
       values: data.map(function(d) {
-        return {letter: d.letter, measure: +d[name]};
+        return {group: d.group, letter: d.letter, measure: +d[name]};
       })
     };
   });
