@@ -31,7 +31,7 @@
 			var color = d3.scale.category10();
 								
 								
-// set colors for different vars 
+// set colors for different vars (says frequency and pitch)
 color.domain(d3.keys(data[0]).filter(function(key) { return key !== "letter" & key !== "group" ; }));
 
 // create function for iterating over columns
@@ -39,6 +39,22 @@ color.domain(d3.keys(data[0]).filter(function(key) { return key !== "letter" & k
     return {
       name: name,
       values: data.map(function(d) {
+        return {group: d.group, letter: d.letter, measure: +d[name]};
+      })
+    };
+  });
+  
+// aggregate dataset by group and letter
+  var tmp1 = d3.nest()
+    .key(function(d) { return d.group; })
+    .key(function(d) { return d.letter; })
+    .map(data);
+
+// look for same structure as previous "columns" array
+  var columns1 = color.domain().map(function(name) {
+    return {
+      name: name,
+      values: tmp1.map(function(t) {
         return {group: d.group, letter: d.letter, measure: +d[name]};
       })
     };
