@@ -51,14 +51,14 @@ color.domain(d3.keys(data[0]).filter(function(key) { return key !== "letter" & k
     .map(data);
 
 // look for same structure as previous "columns" array
-  var columns1 = color.domain().map(function(name) {
-    return {
-      name: name,
-      values: tmp1.map(function(t) {
-        return {group: d.group, letter: d.letter, measure: +d[name]};
-      })
-    };
-  });
+//  var columns1 = color.domain().map(function(name) {
+//    return {
+//      name: name,
+//      values: tmp1.map(function(t) {
+//        return {group: t.group, letter: t.letter, measure: +t[name]};
+//      })
+//    };
+//  });
 
 									
 // set domains
