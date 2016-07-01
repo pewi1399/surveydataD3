@@ -101,7 +101,15 @@ color.domain(d3.keys(data[0]).filter(function(key) { return key !== "letter" & k
   								.append("g")
   								.attr("class", "measure");
 
-// draw path using plain old function for "d"
+
+
+var testdata = d3.selectAll("ggplot")
+                  .data(data)
+                  .enter()
+                  .append("g")
+                  .atttr("class", "ggplot")
+                  
+                  // draw path using plain old function for "d"
 // note that bound data is now handled the same way as a regular 1-dim dataset at this point								
 measure.append("path")
       .attr("class", "line")
