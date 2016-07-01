@@ -35,7 +35,7 @@
 color.domain(d3.keys(data[0]).filter(function(key) { return key !== "letter" & key !== "group" ; }));
 
 // create function for iterating over columns
-  var columns = color.domain().map(function(name) {
+  var columns = ["frequency", "pitch"].map(function(name) {
     return {
       name: name,
       values: data.map(function(d) {
@@ -51,14 +51,14 @@ color.domain(d3.keys(data[0]).filter(function(key) { return key !== "letter" & k
     .map(data);
 
 // look for same structure as previous "columns" array
-  var columns1 = color.domain().map(function(name) {
-    return {
-      name: name,
-      values: tmp1.map(function(t) {
-        return {group: d.group, letter: d.letter, measure: +d[name]};
-      })
-    };
-  });
+//  var columns1 = ["frequency", "pitch"].map(function(name) {
+//    return {
+//      name: name,
+//      values: data.map(function(t) {
+//        return {group: d.group, letter: d.letter, measure: +d[name]};
+//      })
+//    };
+//  });
 
 									
 // set domains
@@ -94,12 +94,12 @@ color.domain(d3.keys(data[0]).filter(function(key) { return key !== "letter" & k
       .style("text-anchor", "end")
       .text("Frequency");
 
-// append node for path binding nested jsondata to it
-var measure = svg.selectAll(".measure")
-								.data(columns)
-								.enter()
-								.append("g")
-								.attr("class", "measure");
+  // append node for path binding nested jsondata to it
+  var measure = svg.selectAll(".measure")
+  								.data(columns)
+  								.enter()
+  								.append("g")
+  								.attr("class", "measure");
 
 // draw path using plain old function for "d"
 // note that bound data is now handled the same way as a regular 1-dim dataset at this point								
